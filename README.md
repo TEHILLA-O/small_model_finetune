@@ -4,6 +4,8 @@ Fine-tuning, evaluation and CPU inference benchmarks for **BERT-Mini** (`google/
 
 Every number below comes from runs on one CPU only Linux machine (8 vCPU Intel Xeon, 16 GB RAM, no GPU) between 24 November 2026 15:20 and 17:10 London time. Result files are committed next to the code, and each section links to them.
 
+See also the [model card](MODEL_CARD.md).
+
 ## Contents
 
 - [Fine-tuning evidence](#fine-tuning-evidence)
