@@ -1,0 +1,20 @@
+# Baseline full fine-tune of BERT-Mini (4 layers, hidden 256, 11.2M params) on an SST-2 subset.
+model: google/bert_uncased_L-4_H-256_A-4
+method: full          # full | lora | frozen
+lora_r: 8
+lr: 5.0e-5
+weight_decay: 0.01
+warmup_ratio: 0.06
+epochs: 3
+batch_size: 32
+max_length: 64
+eval_max_length: 128
+train_size: 8000
+dev_size: 1000
+data_seed: 13
+seed: 0
+evals_per_epoch: 2
+early_stopping_patience: 0
+restore_best: true
+imdb_eval_size: 2000
+threads: 2

@@ -1,0 +1,23 @@
+# Reproduction attempt of the BERT-Mini SST-2 result in Turc et al. (2019), "Well-Read Students
+# Learn Better". The paper reports 85.9 on the GLUE SST-2 test set after picking batch size and
+# learning rate from a grid and training for 4 epochs. Test labels are not public, so this run is
+# scored on the official SST-2 validation set instead, with one setting from the paper's grid.
+model: google/bert_uncased_L-4_H-256_A-4
+method: full
+lora_r: 8
+lr: 1.0e-4
+weight_decay: 0.01
+warmup_ratio: 0.1
+epochs: 4
+batch_size: 32
+max_length: 128
+eval_max_length: 128
+train_size: 66349      # all of SST-2 train except the 1,000 row dev split
+dev_size: 1000
+data_seed: 13
+seed: 0
+evals_per_epoch: 1
+early_stopping_patience: 0
+restore_best: true
+imdb_eval_size: 2000
+threads: 2
