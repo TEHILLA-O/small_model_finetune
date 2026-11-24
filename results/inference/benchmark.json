@@ -1,0 +1,180 @@
+{
+  "hardware": {
+    "device": "cpu (no GPU on this machine, so memory is RAM not VRAM)",
+    "cpu_count": 8,
+    "threads_used": 4,
+    "platform": "Linux-6.12.94+-x86_64-with-glibc2.41",
+    "python": "3.13.5",
+    "torch": "2.15.0+cpu",
+    "onnxruntime": "1.32.0",
+    "cpu_model": "Intel(R) Xeon(R) Processor"
+  },
+  "max_length": 128,
+  "padding": "dynamic, to the longest sentence in each batch",
+  "results": [
+    {
+      "variant": "torch_fp32",
+      "size_mb": 44.713525,
+      "accuracy_sst2_validation": 0.7844036697247706,
+      "eval_examples": 872,
+      "rss_mb": {
+        "before_imports": 26.9375,
+        "after_libs": 374.26953125,
+        "after_model_load": 537.79296875,
+        "model_load_delta": 163.5234375,
+        "peak_after_libs": 628.9140625,
+        "peak_delta_over_libs": 254.64453125,
+        "peak_reset_ok": true
+      },
+      "latency": {
+        "1": {
+          "batches": 300,
+          "p50_ms": 1.8044874886982143,
+          "p95_ms": 2.4431514146272097,
+          "mean_ms": 1.8516339870014538,
+          "throughput_sent_per_s": 540.0635368652988
+        },
+        "8": {
+          "batches": 109,
+          "p50_ms": 5.6958289933390915,
+          "p95_ms": 6.980808835942298,
+          "mean_ms": 5.783041222490917,
+          "throughput_sent_per_s": 1383.3551745899845
+        },
+        "32": {
+          "batches": 27,
+          "p50_ms": 20.148362033069134,
+          "p95_ms": 26.73983569839038,
+          "mean_ms": 20.801901892776154,
+          "throughput_sent_per_s": 1538.3208787804444
+        }
+      },
+      "agreement_with_torch_fp32": 1.0,
+      "max_abs_prob_diff_vs_torch_fp32": 0.0,
+      "accuracy_drop_vs_torch_fp32": 0.0
+    },
+    {
+      "variant": "torch_int8_dynamic",
+      "size_mb": 35.099622,
+      "accuracy_sst2_validation": 0.783256880733945,
+      "eval_examples": 872,
+      "rss_mb": {
+        "before_imports": 26.94140625,
+        "after_libs": 374.17578125,
+        "after_model_load": 549.859375,
+        "model_load_delta": 175.68359375,
+        "peak_after_libs": 619.87109375,
+        "peak_delta_over_libs": 245.6953125,
+        "peak_reset_ok": true
+      },
+      "latency": {
+        "1": {
+          "batches": 300,
+          "p50_ms": 1.963569491636008,
+          "p95_ms": 2.4888305546483025,
+          "mean_ms": 1.9925437355414033,
+          "throughput_sent_per_s": 501.87104160515975
+        },
+        "8": {
+          "batches": 109,
+          "p50_ms": 5.2200889913365245,
+          "p95_ms": 6.532926589716226,
+          "mean_ms": 5.309072725790972,
+          "throughput_sent_per_s": 1506.8544759495871
+        },
+        "32": {
+          "batches": 27,
+          "p50_ms": 14.666953997220844,
+          "p95_ms": 16.80430310079828,
+          "mean_ms": 14.757648267765978,
+          "throughput_sent_per_s": 2168.3671693067245
+        }
+      },
+      "agreement_with_torch_fp32": 0.9690366972477065,
+      "max_abs_prob_diff_vs_torch_fp32": 0.24045228958129883,
+      "accuracy_drop_vs_torch_fp32": 0.0011467889908256534
+    },
+    {
+      "variant": "onnx_fp32",
+      "size_mb": 44.777001,
+      "accuracy_sst2_validation": 0.7844036697247706,
+      "eval_examples": 872,
+      "rss_mb": {
+        "before_imports": 27.0078125,
+        "after_libs": 374.1640625,
+        "after_model_load": 459.9921875,
+        "model_load_delta": 85.828125,
+        "peak_after_libs": 564.9375,
+        "peak_delta_over_libs": 190.7734375,
+        "peak_reset_ok": true
+      },
+      "latency": {
+        "1": {
+          "batches": 300,
+          "p50_ms": 0.836402497952804,
+          "p95_ms": 1.213472435483709,
+          "mean_ms": 0.8516214033200716,
+          "throughput_sent_per_s": 1174.230704044626
+        },
+        "8": {
+          "batches": 109,
+          "p50_ms": 5.905518017243594,
+          "p95_ms": 7.168054429348558,
+          "mean_ms": 5.957480199066836,
+          "throughput_sent_per_s": 1342.8496163953844
+        },
+        "32": {
+          "batches": 27,
+          "p50_ms": 23.69212795747444,
+          "p95_ms": 27.885588398203254,
+          "mean_ms": 24.01267482114404,
+          "throughput_sent_per_s": 1332.6295482843432
+        }
+      },
+      "agreement_with_torch_fp32": 1.0,
+      "max_abs_prob_diff_vs_torch_fp32": 1.0132789611816406e-06,
+      "accuracy_drop_vs_torch_fp32": 0.0
+    },
+    {
+      "variant": "onnx_int8_dynamic",
+      "size_mb": 11.376549,
+      "accuracy_sst2_validation": 0.7878440366972477,
+      "eval_examples": 872,
+      "rss_mb": {
+        "before_imports": 26.93359375,
+        "after_libs": 374.0390625,
+        "after_model_load": 420.84375,
+        "model_load_delta": 46.8046875,
+        "peak_after_libs": 512.67578125,
+        "peak_delta_over_libs": 138.63671875,
+        "peak_reset_ok": true
+      },
+      "latency": {
+        "1": {
+          "batches": 300,
+          "p50_ms": 0.7215850055217743,
+          "p95_ms": 1.0827800084371122,
+          "mean_ms": 0.7588192162802443,
+          "throughput_sent_per_s": 1317.836947912352
+        },
+        "8": {
+          "batches": 109,
+          "p50_ms": 4.760975018143654,
+          "p95_ms": 6.809289229568094,
+          "mean_ms": 4.969829624014642,
+          "throughput_sent_per_s": 1609.7131300725714
+        },
+        "32": {
+          "batches": 27,
+          "p50_ms": 17.13473501149565,
+          "p95_ms": 19.644059165148064,
+          "mean_ms": 17.126568879811437,
+          "throughput_sent_per_s": 1868.441964328369
+        }
+      },
+      "agreement_with_torch_fp32": 0.9873853211009175,
+      "max_abs_prob_diff_vs_torch_fp32": 0.14684626460075378,
+      "accuracy_drop_vs_torch_fp32": -0.0034403669724770714
+    }
+  ]
+}

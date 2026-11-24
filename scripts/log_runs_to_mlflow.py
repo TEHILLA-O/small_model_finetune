@@ -1,7 +1,7 @@
 """Log every finished run under results/ to an MLflow tracking store and export a runs table.
 
     MLFLOW_DISABLE_AGENT_HINT=1 PYTHONPATH=src python scripts/log_runs_to_mlflow.py \
-        --tracking-uri file:///tmp/smft_mlruns --out results/mlflow_runs.csv
+        --tracking-uri sqlite:////tmp/smft_mlflow.db --out results/mlflow_runs.csv
 
 Training writes metrics.json, config.yaml and predictions.npz for every run. This
 script turns those into MLflow runs (params, final metrics, the learning curve as
@@ -24,11 +24,15 @@ def flatten(cfg: dict) -> dict:
 
 def main() -> None:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--tracking-uri", default="file:///tmp/smft_mlruns")
+    ap.add_argument("--tracking-uri", default="sqlite:////tmp/smft_mlflow.db")
     ap.add_argument("--experiment", default="bert-mini-sst2")
     ap.add_argument("--out", type=Path, default=Path("results/mlflow_runs.csv"))
+    ap.add_argument("--artifact-root", default="/tmp/smft_mlartifacts")
     args = ap.parse_args()
     mlflow.set_tracking_uri(args.tracking_uri)
+    artifact_root = Path(args.artifact_root).resolve().as_uri()
+    if mlflow.get_experiment_by_name(args.experiment) is None:
+        mlflow.create_experiment(args.experiment, artifact_location=artifact_root)
     mlflow.set_experiment(args.experiment)
     paths = sorted(Path("results").glob("*/metrics.json")) + sorted(Path("results/runs").glob("*/metrics.json"))
     for p in paths:

@@ -1,0 +1,29 @@
+{
+  "sst2_validation": {
+    "examples": 872,
+    "exact_match_in_sst2_train": 2,
+    "share": 0.0022935779816513763
+  },
+  "rotten_tomatoes_test": {
+    "examples": 1066,
+    "exact_match_in_sst2_train": 457,
+    "share": 0.42870544090056284,
+    "results/main": {
+      "accuracy_all": 0.7636022514071295,
+      "accuracy_overlapping": 0.8096280087527352,
+      "accuracy_clean": 0.729064039408867,
+      "clean_rows": 609
+    },
+    "results/reproduce_turc2019": {
+      "accuracy_all": 0.875234521575985,
+      "accuracy_overlapping": 0.9299781181619255,
+      "accuracy_clean": 0.8341543513957307,
+      "clean_rows": 609
+    }
+  },
+  "imdb_test_2000": {
+    "examples": 2000,
+    "exact_match_in_sst2_train": 0,
+    "share": 0.0
+  }
+}

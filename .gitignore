@@ -7,3 +7,6 @@ results/*/model/
 *.onnx
 .pytest_cache/
 .ruff_cache/
+mlruns/
+mlartifacts/
+*.db
